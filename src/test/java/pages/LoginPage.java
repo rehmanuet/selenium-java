@@ -2,15 +2,10 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-
-public class LoginPage {
-    WebDriver driver;
-    WebDriverWait wait;
+public class LoginPage extends BasePage {
 
     By logo = By.className("login_logo");
     By username = By.cssSelector("[data-test='username']");
@@ -20,38 +15,47 @@ public class LoginPage {
     By usernameCrossIcon = By.cssSelector("[data-test='username']+[data-icon='times-circle']");
     By passwordCrossIcon = By.cssSelector("[data-test='password']+[data-icon='times-circle']");
 
-
-    public LoginPage(WebDriver driver) {
-        this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-
+    public LoginPage(WebDriver driver, WebDriverWait wait) {
+        super(driver, wait);
     }
 
     public void checkLogo() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(logo));
-        boolean logoDisplayed = driver.findElement(loginButton).isDisplayed();
-        Assert.assertTrue(logoDisplayed, "Logo is not displayed");
-
+        Assert.assertTrue(isVisible(logo), "Logo is not displayed");
     }
 
     public void checkUsernameField() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(username));
-        boolean usernameDisplayed = driver.findElement(username).isDisplayed();
-        Assert.assertTrue(usernameDisplayed, "Username field is not displayed");
-
+        Assert.assertTrue(isVisible(username), "Username field is not displayed");
     }
 
     public void checkPasswordField() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(password));
-        boolean passwordDisplayed = driver.findElement(password).isDisplayed();
-        Assert.assertTrue(passwordDisplayed, "Password field is not displayed");
+        Assert.assertTrue(isVisible(password), "Password field is not displayed");
     }
 
     public void checkLoginButton() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(loginButton));
-        boolean loginButtonDisplayed = driver.findElement(loginButton).isDisplayed();
-        Assert.assertTrue(loginButtonDisplayed, "Password field is not displayed");
+        Assert.assertTrue(isVisible(loginButton), "Login button is not displayed");
+    }
 
+    public void doLogin(String uname, String pass) {
+        isVisible(username);
+        click(username);
+        doSendKeys(username, uname);
+
+        isVisible(password);
+        click(password);
+        doSendKeys(password, pass);
+
+        isVisible(loginButton);
+        click(loginButton);
+    }
+
+    public void checkLoginSuccessfully() {
+        Assert.assertFalse(isVisible(loginButton), "Not Successfully Logged-in");
+    }
+
+    public void checkLoginError(String message) {
+        Assert.assertTrue(isVisible(usernameCrossIcon), "Username Cross Icon is not displayed");
+        Assert.assertTrue(isVisible(passwordCrossIcon), "Password Cross Icon is not displayed");
+        Assert.assertEquals(doGetText(errorMessage), message);
     }
 }
 

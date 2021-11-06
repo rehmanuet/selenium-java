@@ -1,24 +1,29 @@
 package tests;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 
-public class VerifyLoginPage {
+import java.lang.reflect.InvocationTargetException;
+
+public class VerifyLoginPage extends BaseTest {
+
     @Test
-    public void verifyLogin() {
-        ChromeOptions chromeOptions = new ChromeOptions();
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver(chromeOptions);
-        driver.get("https://www.saucedemo.com/");
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.checkLogo();
-        loginPage.checkUsernameField();
-        loginPage.checkPasswordField();
-        loginPage.checkLoginButton();
-driver.close();
+    public void verifyLoginPageElementsTest() throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+        page.getInstance(LoginPage.class).checkLogo();
+        page.getInstance(LoginPage.class).checkUsernameField();
+        page.getInstance(LoginPage.class).checkPasswordField();
+        page.getInstance(LoginPage.class).checkLoginButton();
+    }
+
+    @Test
+    public void verifyLoginTest() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+        page.getInstance(LoginPage.class).doLogin("standard_user", "secret_sauce");
+        page.getInstance(LoginPage.class).checkLoginSuccessfully();
+    }
+
+    @Test
+    public void verifyInvalidLoginTest() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+        page.getInstance(LoginPage.class).doLogin("stan", "secret_sauce");
+        page.getInstance(LoginPage.class).checkLoginError("Epic sadface: Username and password do not match any user in this service");
     }
 }
