@@ -49,6 +49,8 @@ Folder Structure
 Coverage
 ---------------
 This framework covers the both positive and negative testcases.
+Documentation of testcases could be found on [Google Sheets](https://docs.google.com/spreadsheets/d/12pL45y5Ohvd8vjA2EM-PhUlueiagqOwMAfx8m90_cKY/edit?usp=sharing) as well as within project i.e `Testcases_Documentation.xlsx` </br>
+Test Application: [www.saucedemo.com](https://www.saucedemo.com/)
 
 #### Test Cases Breakdown
 |    <sub>Pages/Screens</sub>  |    <sub>Test cases</sub> |
@@ -59,7 +61,6 @@ This framework covers the both positive and negative testcases.
 
 Sample Testcase
 ---------------
-Documentation of testcases could be found on [Google Sheets](https://docs.google.com/spreadsheets/d/12pL45y5Ohvd8vjA2EM-PhUlueiagqOwMAfx8m90_cKY/edit?usp=sharing) as well as within project i.e `Testcases_Documentation.xlsx` </br>
 Negative testcase: Verify if a user cannot login with a valid username and an invalid password and get an error message.
 ```
     public void tc003_verifyInvalidLogin() {
