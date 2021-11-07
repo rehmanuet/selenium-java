@@ -5,6 +5,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.lang.reflect.InvocationTargetException;
 
+/**
+ * Implementation of the Base Page Class for the generic selenium methods used in test cases
+ *
+ * @author Abdur.Rehman
+ */
 
 public class Page {
     public WebDriver driver;

@@ -39,13 +39,13 @@ public class InventoryPage extends BasePage {
     public void addProductToCart() {
         isVisible(addBackpackButton);
         click(addBackpackButton);
-        Assert.assertFalse(isVisible(addBackpackButton), "Menu button is not displayed");
+        Assert.assertFalse(isVisible(addBackpackButton), "Product is not added into cart");
         String badgeCount = doGetText(badge);
         Assert.assertEquals(badgeCount, "1");
     }
 
 
-    public void removeProductToCart() {
+    public void removeProductFromCart() {
         isVisible(removeButton);
         click(removeButton);
         Assert.assertFalse(isVisible(badge), "1");
