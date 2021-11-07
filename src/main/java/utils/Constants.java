@@ -8,6 +8,7 @@ public class Constants {
     /**
      * Constants for Test Data
      */
+    // TODO: 07/11/2021 Data is too short to make it Data Driven, Apache POI library will be integrated once data grows
     public static final String VALID_USERNAME = "standard_user";
     public static final String VALID_PASSWORD = "secret_sauce";
     public static final String INVALID_USERNAME = "non_standard_user";

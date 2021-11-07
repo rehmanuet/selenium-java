@@ -10,6 +10,10 @@ import java.lang.reflect.InvocationTargetException;
 import static utils.Constants.*;
 import static utils.FileUtils.getMessage;
 
+/**
+ * Implementation of the test cases for the Inventory Page
+ */
+
 public class VerifyLoginPage extends BaseTest {
 
     @Test

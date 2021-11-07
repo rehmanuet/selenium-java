@@ -1,13 +1,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="API Testing Suite" verbose="1" parallel="none">
+<suite name="SeleniumAutomation" verbose="1" parallel="none">
     <listeners>
         <listener class-name="listeners.TestListener"/>
     </listeners>
     <test name="RestAssured-Java-Assignment" thread-count="1" preserve-order="true"  enabled="true">
         <classes>
             <class name="tests.VerifyLoginPage"/>
-<!--            <class name="tests.VerifyInventoryPage"/>-->
+            <class name="tests.VerifyInventoryPage"/>
         </classes>
     </test>
 </suite>

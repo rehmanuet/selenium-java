@@ -5,6 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+/**
+ * Implementation of the page layer for the Login Page
+ */
+
 public class LoginPage extends BasePage {
 
     By logo = By.className("login_logo");

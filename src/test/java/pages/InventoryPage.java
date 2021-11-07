@@ -5,15 +5,20 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+/**
+ * Implementation of the page layer for the Inventory Page
+ */
+
 public class InventoryPage extends BasePage {
 
-    By productTitle = By.className("title");
+    By badge = By.className("shopping_cart_badge");
     By sortButton = By.className("product_sort_container");
     By cartButton = By.className("shopping_cart_link");
     By menuButton = By.className("bm-burger-button");
-    By addBackpackButton = By.id("add-to-cart-sauce-labs-backpack");
-    By badge = By.className("shopping_cart_badge");
+    By productTitle = By.className("title");
     By removeButton = By.id("remove-sauce-labs-backpack");
+
+    By addBackpackButton = By.id("add-to-cart-sauce-labs-backpack");
 
     public InventoryPage(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
@@ -35,7 +40,6 @@ public class InventoryPage extends BasePage {
         Assert.assertTrue(isVisible(menuButton), "Menu button is not displayed");
     }
 
-
     public void addProductToCart() {
         isVisible(addBackpackButton);
         click(addBackpackButton);
@@ -43,7 +47,6 @@ public class InventoryPage extends BasePage {
         String badgeCount = doGetText(badge);
         Assert.assertEquals(badgeCount, "1");
     }
-
 
     public void removeProductFromCart() {
         isVisible(removeButton);

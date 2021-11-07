@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.lang.reflect.InvocationTargetException;
 
 /**
- * Implementation of the Base Page Class for the generic selenium methods used in test cases
+ * Implementation of the Java generic class for Page Object Model
  *
  * @author Abdur.Rehman
  */
@@ -20,7 +20,13 @@ public class Page {
         this.wait = wait;
     }
 
-    public <TPage extends BasePage> TPage getInstance(Class<TPage> pageClass) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    /**
+     * Java Generics method for POM
+     *
+     * @return new page object
+     */
+
+    public <POM extends BasePage> POM getInstance(Class<POM> pageClass) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         return pageClass.getDeclaredConstructor(WebDriver.class, WebDriverWait.class).newInstance(this.driver, this.wait);
     }
 }

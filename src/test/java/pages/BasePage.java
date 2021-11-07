@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
- * Implementation of the Base Page Class for the generic selenium methods used in test cases
+ * Implementation of the Base Page Class for the wrapper methods used in test cases
  *
  * @author Abdur.Rehman
  */

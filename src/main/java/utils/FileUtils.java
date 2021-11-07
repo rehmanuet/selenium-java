@@ -19,7 +19,6 @@ public class FileUtils {
     public static synchronized String getPropertyValue(String filePath, String key) {
 
         String propertyValue = "message not found - ";
-
         try (InputStream input = new FileInputStream(filePath)) {
             Properties prop = new Properties();
             prop.load(input);

@@ -12,6 +12,10 @@ import java.lang.reflect.InvocationTargetException;
 import static utils.Constants.VALID_PASSWORD;
 import static utils.Constants.VALID_USERNAME;
 
+/**
+ * Implementation of the test cases for the Login Page
+ */
+
 public class VerifyInventoryPage extends BaseTest {
 
     @Test
